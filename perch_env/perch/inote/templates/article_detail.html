@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ articleDetail.title }}</title>
+</head>
+<body>
+    <div>
+        <a href="{% url "home" %}"><h2>个人笔记inote</h2></a>
+    </div>
+    <h3>{{ articleDetail.title }}</h3>
+    <p>published Date: {{ articleDetail.created_time|date:"Y-m-d H:i:s" }}</p>
+    <p>标签：
+        {% for article_cate in articleDetail.article_cate.all %}
+            <a href="{% url 'articles_by_cate' article_cate.id %}">{{ article_cate.cate_name }}</a>
+        {% endfor %}
+    </p>
+    {% comment %}若内容超过30个字符，则只显示前30个字符，后面的在前端会省略掉，此处的|称为过滤器{% endcomment %}
+    <p>{{ articleDetail.content|truncatechars:12 }}</p>
+</body>
+</html>

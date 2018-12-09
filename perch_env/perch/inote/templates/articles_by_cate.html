@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ articleCate.cate_name }}标签所有文章</title>
+</head>
+<body>
+    <h3>标签{{ articleCate.cate_name }}的所有文章</h3>
+    <hr>
+    {% for article in articlesByCate %}
+        {% comment %}此处article_detail即为inote的url.py中第六行定义的name{% endcomment %}
+        <h3><a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a></h3>
+    {% endfor %}
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>articleList</title>
+</head>
+<body>
+    <div>
+        <a href="{% url "home" %}"><h2>个人笔记inote(一共有{{ articleCount }}篇文章)</h2></a>
+    </div>
+    <hr>
+    {% for article in articleList %}
+        {% comment %}此处article_detail即为inote的url.py中第六行定义的name{% endcomment %}
+        <h3><a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a></h3>
+    {% endfor %}
+</body>
+</html>

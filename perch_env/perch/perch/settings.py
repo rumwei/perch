@@ -52,6 +52,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'perch.urls'
 
+# 可通过下方的'DIRS'设置全局的模版文件目录，如想设置与inote同级的文件夹temp为全局模版文件目录，则可在'DIRS'中加入如下配置，其中BASE_DIR已在上方定义了
+# os.path.join(BASE_DIR, 'temp'),
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -119,3 +121,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+# 下面就是用户自定义的，用来告诉django上面的'/static/'具体的目录是哪里，之后前端引用静态文件即可直接href="/static/..."
+STATICFILES_DIRS = [
+   os.path.join(BASE_DIR, 'static'),
+]
